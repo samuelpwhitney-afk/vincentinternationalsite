@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Order List | Vincent International Distributing, Inc.</title>
+<meta name="description" content="Your order list from Vincent International Distributing, Inc. in Miami, FL.">
+<style>
+/* ============================================================
+   Vincent International Distributing, Inc. — Site Stylesheet
+   Design concept: Miami import/export warehouse — cargo manifests,
+   customs stamps, aisle signage. Warm cardboard + navy ink + amber.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink-navy: #1F2C3A;
+  --ink-navy-light: #31475A;
+  --cardboard: #FBFAF8;
+  --cardboard-dark: #F3EEE8;
+  --cardboard-darker: #E8E0D3;
+  --amber: #F08C2E;
+  --amber-dark: #D96F16;
+  --teal: #E28A4B;
+  --teal-dark: #C96E29;
+  --stamp-red: #C45A39;
+  --white: #FFFFFF;
+  --charcoal: #23313D;
+  --charcoal-soft: #5F6872;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 2px 0 rgba(31,44,58,0.06), 0 10px 24px -14px rgba(31,44,58,0.18);
+  --container: 1140px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, var(--white) 0%, var(--cardboard) 100%);
+  color: var(--charcoal);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color: var(--teal-dark); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  color: var(--ink-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h1{ font-size: clamp(2rem, 6vw, 3.4rem); font-weight:700; }
+h2{ font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight:600; }
+h3{ font-size: 1.25rem; font-weight:600; letter-spacing:0.02em; }
+
+p{ margin:0 0 1em; color: var(--charcoal-soft); }
+
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section{ padding: 56px 0; }
+.section--tight{ padding: 36px 0; }
+.section--navy{ background: linear-gradient(135deg, var(--ink-navy) 0%, var(--ink-navy-light) 100%); color: var(--white); }
+.section--navy h2, .section--navy h3{ color: var(--white); }
+.section--navy p{ color: rgba(255,255,255,0.92); }
+.section--dark-card{ background: var(--cardboard-dark); }
+
+/* -------- Buttons -------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-display);
+  font-weight:600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor:pointer;
+  transition: transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn:hover{ text-decoration:none; transform: translateY(-1px); }
+.btn:active{ transform: translateY(0); }
+.btn-primary{ background: var(--amber); color: var(--ink-navy); }
+.btn-primary:hover{ background: var(--amber-dark); }
+.btn-outline{ background: transparent; border-color: currentColor; color: inherit; }
+.btn-outline:hover{ background: rgba(255,255,255,0.08); }
+.btn-outline-navy{ background: transparent; border-color: var(--ink-navy); color: var(--ink-navy); }
+.btn-outline-navy:hover{ background: var(--ink-navy); color: var(--white); }
+.btn-sm{ padding: 10px 18px; font-size: 0.78rem; }
+.btn-block{ width:100%; justify-content:center; }
+.btn[disabled]{ opacity:0.55; cursor:not-allowed; transform:none; }
+
+/* -------- Nav -------- */
+.site-header{
+  position: sticky; top:0; z-index: 500;
+  background: var(--ink-navy);
+  border-bottom: 3px solid var(--amber);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 20px;
+  max-width: var(--container);
+  margin:0 auto;
+  position:relative;
+}
+.nav-logo{
+  font-family: var(--font-display);
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+.nav-logo span{
+  font-family: var(--font-mono);
+  font-size:0.65rem;
+  color: var(--amber);
+  letter-spacing:0.16em;
+  font-weight:500;
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex; align-items:center; gap: 26px;
+  list-style:none; margin:0; padding:0;
+}
+.nav-links a{
+  color: var(--cardboard);
+  font-family: var(--font-display);
+  font-size:0.92rem;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-weight:500;
+}
+.nav-links a:hover{ color: var(--amber); text-decoration:none; }
+.nav-links a.current{ color: var(--amber); }
+.nav-cta{ display:flex; align-items:center; gap:14px; }
+.nav-toggle{
+  display:none;
+  background:none; border:none; cursor:pointer;
+  width:34px; height:28px; position:relative;
+  flex-direction:column; justify-content:space-between;
+}
+.nav-toggle span{ display:block; height:3px; background:var(--white); border-radius:2px; }
+
+.has-dropdown{ position:relative; }
+.dropdown{
+  list-style:none; margin:0; padding:10px 0;
+  position:absolute; top:100%; left:0;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  min-width: 220px;
+  display:none;
+  z-index: 50;
+}
+.has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown{ display:block; }
+.dropdown a{
+  display:block; padding:10px 20px;
+  color: var(--ink-navy);
+  font-family: var(--font-body);
+  text-transform:none;
+  letter-spacing:0;
+  font-size:0.92rem;
+  font-weight:500;
+}
+.dropdown a:hover{ background: var(--cardboard); text-decoration:none; }
+
+@media (max-width: 860px){
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:absolute; top:100%; left:0; right:0;
+    background: var(--ink-navy);
+    flex-direction:column; align-items:flex-start;
+    padding: 10px 20px 20px;
+    gap: 4px;
+    display:none;
+    border-bottom: 3px solid var(--amber);
+  }
+  .nav-links.open{ display:flex; }
+  .nav-links a{ padding:10px 0; width:100%; }
+  .has-dropdown .dropdown{
+    position:static; box-shadow:none; display:block; min-width:0;
+    padding-left: 12px; background:transparent; margin-top:4px;
+  }
+  .has-dropdown .dropdown a{ color: var(--cardboard); padding:8px 0; }
+  .nav-cta .btn span.btn-label-full{ display:none; }
+}
+
+/* -------- Order List Items -------- */
+.order-item{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--cardboard-darker);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+
+.order-item-number{
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 28px;
+}
+
+.order-item-details{
+  flex: 1;
+}
+
+.order-item-name{
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin-bottom: 4px;
+}
+
+.order-item-meta{
+  font-size: 0.85rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 8px;
+}
+
+.order-item-controls{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qty-button{
+  background: var(--cardboard-dark);
+  border: 1px solid var(--cardboard-darker);
+  color: var(--ink-navy);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease;
+}
+
+.qty-button:hover{
+  background: var(--cardboard-darker);
+}
+
+.qty-display{
+  font-family: var(--font-mono);
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.empty-state{
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--cardboard-dark);
+  border-radius: var(--radius-sm);
+}
+
+.empty-state-icon{
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.breadcrumb{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 14px;
+}
+
+.breadcrumb a{ color: var(--teal-dark); }
+
+.grid{ display:grid; gap: 24px; }
+.grid-2{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 860px){ .grid-2{ grid-template-columns: 1fr; } }
+@media (max-width: 600px){ .grid-2{ grid-template-columns: 1fr; } }
+
+/* -------- Footer -------- */
+.site-footer{
+  background: var(--ink-navy);
+  color: var(--cardboard);
+  padding: 48px 0 24px;
+  border-top: 3px solid var(--amber);
+}
+.footer-grid{
+  display:grid; grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr; } }
+.site-footer h4{ color: var(--amber); font-size:0.95rem; margin-bottom:14px; }
+.site-footer a{ color: var(--cardboard); }
+.site-footer a:hover{ color: var(--amber); }
+.footer-list{ list-style:none; margin:0; padding:0; }
+.footer-list li{ margin-bottom:8px; font-size:0.92rem; }
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 18px;
+  font-size: 0.78rem;
+  color: #9FADC4;
+  font-family: var(--font-mono);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+}
+
+.text-center{ text-align:center; }
+.max-w-prose{ max-width: 640px; }
+
+.print-sheet{ display:none; }
+@media print{
+  body *{ visibility:hidden; }
+  .print-sheet, .print-sheet *{ visibility:visible; }
+  .print-sheet{
+    display:block;
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    padding:0;
+    margin:0;
+  }
+  .print-sheet-header{ display:flex; justify-content:space-between; align-items:flex-start; border-bottom:3px solid #000; padding-bottom:12px; margin-bottom:18px; }
+  .print-sheet-header h1{ font-size:1.4rem; margin:0 0 4px; text-transform:uppercase; letter-spacing:0.04em; }
+  .print-sheet-header p{ margin:0; font-size:0.85rem; line-height:1.4; }
+  .print-sheet-meta{ text-align:right; font-size:0.85rem; }
+  .print-sheet-meta div{ margin-bottom:4px; }
+  .print-sheet table{ width:100%; border-collapse:collapse; margin-bottom:20px; }
+  .print-sheet th, .print-sheet td{ border:1px solid #000; padding:8px 10px; font-size:0.9rem; text-align:left; }
+  .print-sheet th{ background:#eee; text-transform:uppercase; font-size:0.78rem; letter-spacing:0.05em; }
+  .print-sheet td.qty-col, .print-sheet th.qty-col{ text-align:center; width:90px; }
+  .print-sheet-totals{ display:flex; justify-content:flex-end; gap:32px; font-size:0.9rem; margin-bottom:24px; }
+  .print-sheet-totals strong{ font-size:1rem; }
+  .print-sheet-footer{ font-size:0.8rem; border-top:1px solid #000; padding-top:10px; display:flex; justify-content:space-between; }
+  @page{ margin:0.6in; }
+}
+
+</style>
+</head>
+<body>
+  <div style="display:block; background:var(--stamp-red); color:#fff; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.8rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:10px 16px; cursor:default;">&#128293; This Week's HOT Items &mdash; Coming Soon</div>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo" style="text-decoration:none;">
+        <span>VINCENT</span>
+        <span style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.05em;">INTERNATIONAL</span>
+        Distributing, Inc. — Miami, FL
+      </a>
+      <ul class="nav-links">
+      <li class="has-dropdown"><a href="catalog.html" class="current">Catalog &#9662;</a>
+        <ul class="dropdown">
+          <li><a href="category-health-beauty.html">Health & Beauty</a></li>
+          <li><a href="category-bath.html">Bath</a></li>
+          <li><a href="category-kitchen.html">Kitchen</a></li>
+          <li><a href="category-clothing.html">Clothing</a></li>
+          <li><a href="category-other.html">Other</a></li>
+          <li><a href="category-home-decor.html">Home Décor</a></li>
+          <li><a href="category-bedding.html">Bedding</a></li>
+          <li><a href="category-fragrance.html">Fragrance</a></li>
+        </ul>
+      </li>        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="order-list.html" class="btn btn-primary btn-sm"><span class="btn-label-full">Your </span>Order List<span class="order-badge" id="order-badge">0</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section" style="padding-top:32px;">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Your Order List</div>
+      <h1>Your Order List</h1>
+      <p class="max-w-prose">Review your items below, adjust quantities, and print your list when ready for your next visit or phone call.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <div>
+        <h3 style="margin-bottom:20px;">Items Added</h3>
+        <div id="order-list" style="min-height:200px;">
+          <!-- Order items will be rendered here -->
+        </div>
+      </div>
+      <div style="background: var(--cardboard-dark); padding:24px; border-radius:8px; height:fit-content;">
+        <h3 style="margin-bottom:16px;">Order Summary</h3>
+        <div style="margin-bottom:20px; padding-bottom:20px; border-bottom:1px dashed var(--cardboard-darker);">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+            <span>Total Items:</span>
+            <strong id="item-count">0</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+            <span>Unique Products:</span>
+            <strong id="unique-count">0</strong>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-block btn-sm" data-print-order style="margin-bottom:12px;">Print Order List</button>
+        <a href="catalog.html" class="btn btn-outline-navy btn-block btn-sm" style="justify-content:center;">Back to Catalog</a>
+        <button type="button" class="btn btn-outline-navy btn-block btn-sm" data-clear-order style="margin-top:12px;">Clear Order List</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container text-center">
+    </div>
+  </section>
+
+  <div class="print-sheet" id="print-sheet"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Vincent International Distributing, Inc.</h4>
+          <ul>
+            <li>20325 NE 15th Ct, Miami, FL 33179</li>
+            <li><a href="tel:+13057701488">(305) 770-1488</a></li>
+            <li><a href="mailto:Vincentmiami305@gmail.com">Vincentmiami305@gmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="catalog.html">Full Catalog</a></li>
+            <li><a href="order-list.html">Your Order List</a></li>
+            <li><a href="reviews.html">Google Reviews</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact & Directions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Mon – Fri: 8:30 AM – 5:00 PM</li>
+            <li>Saturday: Closed</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Vincent International Distributing, Inc. — Miami, FL<br>
+        Wholesale only — pricing available to approved accounts
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const selectedItems = {};
+    const STORAGE_KEY = 'vincentOrderList';
+
+    function loadOrderList() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        Object.assign(selectedItems, JSON.parse(stored));
+      }
+      renderOrderList();
+      updateSummary();
+      updateBadge();
+    }
+
+    function renderOrderList() {
+      const orderList = document.getElementById('order-list');
+      
+      if (Object.keys(selectedItems).length === 0) {
+        orderList.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📦</div>
+            <h3 style="font-size:1rem; margin-top:0;">Your order list is empty</h3>
+            <p style="margin:0; font-size:0.9rem;">Browse the catalog and add items to get started.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      Object.entries(selectedItems).forEach(([itemId, item], index) => {
+        html += `
+          <div class="order-item">
+            <div class="order-item-number">${index + 1}.</div>
+            <div class="order-item-details">
+              <div class="order-item-name">${item.name}</div>
+              <div class="order-item-meta">Item #: ${itemId}</div>
+              <div class="order-item-controls">
+                <button type="button" class="qty-button" onclick="adjustQuantity('${itemId}', -1)">−</button>
+                <div class="qty-display">${item.qty}</div>
+                <button type="button" class="qty-button" onclick="adjustQuantity('${itemId}', 1)">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      orderList.innerHTML = html;
+    }
+
+    function adjustQuantity(itemId, change) {
+      if (selectedItems[itemId]) {
+        selectedItems[itemId].qty += change;
+        if (selectedItems[itemId].qty <= 0) {
+          delete selectedItems[itemId];
+        }
+        saveOrderList();
+        renderOrderList();
+        updateSummary();
+        updateBadge();
+      }
+    }
+
+    function updateSummary() {
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      const uniqueCount = Object.keys(selectedItems).length;
+      document.getElementById('item-count').textContent = itemCount;
+      document.getElementById('unique-count').textContent = uniqueCount;
+    }
+
+    function updateBadge() {
+      const badge = document.getElementById('order-badge');
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      badge.textContent = itemCount;
+      badge.style.display = itemCount > 0 ? 'flex' : 'none';
+    }
+
+    function saveOrderList() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(selectedItems));
+    }
+
+    document.addEventListener('DOMContentLoaded', loadOrderList);
+
+    document.querySelector('[data-print-order]')?.addEventListener('click', function() {
+      if (Object.keys(selectedItems).length === 0) {
+        alert('Your order list is empty.');
+        return;
+      }
+      buildPrintSheet();
+      window.print();
+    });
+
+    function buildPrintSheet() {
+      const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      const uniqueCount = Object.keys(selectedItems).length;
+
+      let rows = '';
+      Object.entries(selectedItems).forEach(([itemId, item], index) => {
+        rows += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+            <td>${itemId}</td>
+            <td class="qty-col">${item.qty}</td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('print-sheet').innerHTML = `
+        <div class="print-sheet-header">
+          <div>
+            <h1>Vincent International Distributing, Inc.</h1>
+            <p>20325 NE 15th Ct, Miami, FL 33179<br>(305) 770-1488 &middot; Vincentmiami305@gmail.com</p>
+          </div>
+          <div class="print-sheet-meta">
+            <div><strong>Order List</strong></div>
+            <div>Date: ${today}</div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item Name</th>
+              <th>Item #</th>
+              <th class="qty-col">Qty</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <div class="print-sheet-totals">
+          <div>Unique Products: <strong>${uniqueCount}</strong></div>
+          <div>Total Items: <strong>${itemCount}</strong></div>
+        </div>
+        <div class="print-sheet-footer">
+          <span>Wholesale only &mdash; pricing available to approved accounts</span>
+          <span>This is not an invoice &mdash; present in person or call to place order</span>
+        </div>
+      `;
+    }
+
+
+    document.querySelector('[data-clear-order]')?.addEventListener('click', function() {
+      if (confirm('Are you sure you want to clear your entire order list?')) {
+        Object.keys(selectedItems).forEach(key => delete selectedItems[key]);
+        saveOrderList();
+        renderOrderList();
+        updateSummary();
+        updateBadge();
+      }
+    });
+  </script>
+</body>
+</html>

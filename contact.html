@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Visit Us | Vincent International Distributing, Inc.</title>
+<meta name="description" content="Contact Vincent International Distributing, Inc. — phone, email, address, and hours for our Miami, FL warehouse.">
+<style>
+/* ============================================================
+   Vincent International Distributing, Inc. — Site Stylesheet
+   Design concept: Miami import/export warehouse — cargo manifests,
+   customs stamps, aisle signage. Warm cardboard + navy ink + amber.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink-navy: #1F2C3A;
+  --ink-navy-light: #31475A;
+  --cardboard: #FBFAF8;
+  --cardboard-dark: #F3EEE8;
+  --cardboard-darker: #E8E0D3;
+  --amber: #F08C2E;
+  --amber-dark: #D96F16;
+  --teal: #E28A4B;
+  --teal-dark: #C96E29;
+  --stamp-red: #C45A39;
+  --white: #FFFFFF;
+  --charcoal: #23313D;
+  --charcoal-soft: #5F6872;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 2px 0 rgba(31,44,58,0.06), 0 10px 24px -14px rgba(31,44,58,0.18);
+  --container: 1140px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, var(--white) 0%, var(--cardboard) 100%);
+  color: var(--charcoal);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color: var(--teal-dark); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  color: var(--ink-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h1{ font-size: clamp(2rem, 6vw, 3.4rem); font-weight:700; }
+h2{ font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight:600; }
+h3{ font-size: 1.25rem; font-weight:600; letter-spacing:0.02em; }
+
+p{ margin:0 0 1em; color: var(--charcoal-soft); }
+
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section{ padding: 56px 0; }
+.section--tight{ padding: 36px 0; }
+.section--navy{ background: linear-gradient(135deg, var(--ink-navy) 0%, var(--ink-navy-light) 100%); color: var(--white); }
+.section--navy h2, .section--navy h3{ color: var(--white); }
+.section--navy p{ color: rgba(255,255,255,0.92); }
+.section--dark-card{ background: var(--cardboard-dark); }
+
+/* -------- Buttons -------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-display);
+  font-weight:600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor:pointer;
+  transition: transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn:hover{ text-decoration:none; transform: translateY(-1px); }
+.btn:active{ transform: translateY(0); }
+.btn-primary{ background: var(--amber); color: var(--ink-navy); }
+.btn-primary:hover{ background: var(--amber-dark); }
+.btn-outline{ background: transparent; border-color: currentColor; color: inherit; }
+.btn-outline:hover{ background: rgba(255,255,255,0.08); }
+.btn-outline-navy{ background: transparent; border-color: var(--ink-navy); color: var(--ink-navy); }
+.btn-outline-navy:hover{ background: var(--ink-navy); color: var(--white); }
+.btn-sm{ padding: 10px 18px; font-size: 0.78rem; }
+.btn-block{ width:100%; justify-content:center; }
+.btn[disabled]{ opacity:0.55; cursor:not-allowed; transform:none; }
+
+/* -------- Nav -------- */
+.site-header{
+  position: sticky; top:0; z-index: 500;
+  background: var(--ink-navy);
+  border-bottom: 3px solid var(--amber);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 20px;
+  max-width: var(--container);
+  margin:0 auto;
+  position:relative;
+}
+.nav-logo{
+  font-family: var(--font-display);
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+.nav-logo span{
+  font-family: var(--font-mono);
+  font-size:0.65rem;
+  color: var(--amber);
+  letter-spacing:0.16em;
+  font-weight:500;
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex; align-items:center; gap: 26px;
+  list-style:none; margin:0; padding:0;
+}
+.nav-links a{
+  color: var(--cardboard);
+  font-family: var(--font-display);
+  font-size:0.92rem;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-weight:500;
+}
+.nav-links a:hover{ color: var(--amber); text-decoration:none; }
+.nav-links a.current{ color: var(--amber); }
+.nav-cta{ display:flex; align-items:center; gap:14px; }
+.nav-toggle{
+  display:none;
+  background:none; border:none; cursor:pointer;
+  width:34px; height:28px; position:relative;
+  flex-direction:column; justify-content:space-between;
+}
+.nav-toggle span{ display:block; height:3px; background:var(--white); border-radius:2px; }
+
+.has-dropdown{ position:relative; }
+.dropdown{
+  list-style:none; margin:0; padding:10px 0;
+  position:absolute; top:100%; left:0;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  min-width: 220px;
+  display:none;
+  z-index: 50;
+}
+.has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown{ display:block; }
+.dropdown a{
+  display:block; padding:10px 20px;
+  color: var(--ink-navy);
+  font-family: var(--font-body);
+  text-transform:none;
+  letter-spacing:0;
+  font-size:0.92rem;
+  font-weight:500;
+}
+.dropdown a:hover{ background: var(--cardboard); text-decoration:none; }
+
+@media (max-width: 860px){
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:absolute; top:100%; left:0; right:0;
+    background: var(--ink-navy);
+    flex-direction:column; align-items:flex-start;
+    padding: 10px 20px 20px;
+    gap: 4px;
+    display:none;
+    border-bottom: 3px solid var(--amber);
+  }
+  .nav-links.open{ display:flex; }
+  .nav-links a{ padding:10px 0; width:100%; }
+  .has-dropdown .dropdown{
+    position:static; box-shadow:none; display:block; min-width:0;
+    padding-left: 12px; background:transparent; margin-top:4px;
+  }
+  .has-dropdown .dropdown a{ color: var(--cardboard); padding:8px 0; }
+  .nav-cta .btn span.btn-label-full{ display:none; }
+}
+
+/* -------- Hero -------- */
+.hero{
+  padding: 64px 0 48px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items:center;
+}
+@media (max-width: 900px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-tag{
+  display:inline-block;
+  font-family: var(--font-mono);
+  font-size:0.75rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color: var(--teal-dark);
+  background: var(--white);
+  border: 1px dashed var(--teal-dark);
+  padding: 6px 12px;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+.hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-top: 28px; }
+.hero-manifest{
+  background: var(--white);
+  border: 2px solid var(--ink-navy);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+  transform: rotate(-1.2deg);
+}
+.hero-manifest-title{
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color: var(--charcoal-soft);
+  border-bottom: 1px dashed var(--cardboard-darker);
+  padding-bottom:10px;
+  margin-bottom:12px;
+  display:flex; justify-content:space-between;
+}
+.hero-manifest ul{ list-style:none; margin:0; padding:0; }
+.hero-manifest li{
+  display:flex; justify-content:space-between; align-items:center;
+  font-family: var(--font-mono);
+  font-size:0.85rem;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--cardboard);
+  color: var(--charcoal);
+}
+.hero-manifest li:last-child{ border-bottom:none; }
+.hero-manifest li b{ color: var(--ink-navy); font-weight:600; }
+
+/* -------- Stamp (signature element) -------- */
+.stamp{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border: 3px double var(--stamp-red);
+  color: var(--stamp-red);
+  border-radius: 50%;
+  width: 118px; height:118px;
+  transform: rotate(-8deg);
+  font-family: var(--font-mono);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  padding: 8px;
+  opacity:0.92;
+  flex-shrink:0;
+}
+.stamp b{ font-size:1.5rem; font-family:var(--font-display); letter-spacing:0.02em; line-height:1; }
+.stamp small{ font-size:0.58rem; letter-spacing:0.1em; margin-top:2px; }
+.stamp--teal{ border-color: var(--teal-dark); color: var(--teal-dark); }
+.stamp--navy{ border-color: var(--ink-navy); color: var(--ink-navy); }
+
+/* -------- Category / Aisle cards -------- */
+.grid{ display:grid; gap: 24px; }
+.grid-3{ grid-template-columns: repeat(3, 1fr); }
+.grid-2{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 860px){ .grid-3{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px){ .grid-3, .grid-2{ grid-template-columns: 1fr; } }
+
+.aisle-card{
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--cardboard-darker);
+  box-shadow: var(--shadow-card);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.aisle-card:hover{ transform: translateY(-4px); }
+.aisle-card-tag{
+  background: var(--ink-navy);
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding: 8px 16px;
+  display:flex; justify-content:space-between;
+}
+.aisle-card-body{ padding: 20px 20px 22px; flex:1; display:flex; flex-direction:column; }
+.aisle-card-body p{ font-size:0.92rem; flex:1; }
+.aisle-card-count{
+  font-family: var(--font-mono); font-size:0.75rem; color: var(--charcoal-soft);
+  margin-bottom: 14px; display:block;
+}
+
+/* -------- Placeholder image box -------- */
+.img-placeholder{
+  background: repeating-linear-gradient(135deg, #E3D8BD, #E3D8BD 10px, #DBCEAE 10px, #DBCEAE 20px);
+  border: 2px dashed var(--cardboard-darker);
+  border-radius: var(--radius-sm);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color: var(--charcoal-soft);
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  text-align:center;
+  gap:6px;
+  min-height: 150px;
+  padding: 10px;
+}
+.img-placeholder .icon{ font-size:1.6rem; }
+.aisle-card .img-placeholder{ min-height:120px; border-radius:0; border-width:0 0 2px 0; }
+
+/* -------- Product card -------- */
+.product-card{
+  background: var(--white);
+  border: 1px solid var(--cardboard-darker);
+  border-radius: var(--radius-md);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  box-shadow: var(--shadow-card);
+}
+.product-card-body{ padding:16px 18px 18px; display:flex; flex-direction:column; flex:1; }
+.product-card h3{ margin-bottom:4px; font-size:1.05rem; }
+.product-meta{
+  font-family: var(--font-mono);
+  font-size:0.78rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 10px;
+}
+.price-placeholder{
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--stamp-red);
+  background: #F7E9D8;
+  border: 1px dashed var(--stamp-red);
+  display:inline-block;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+.product-card-footer{ margin-top:auto; display:flex; gap:10px; }
+
+/* -------- Review card -------- */
+.review-card{
+  background: var(--white);
+  border: 1px solid var(--cardboard-darker);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  display:flex; flex-direction:column; gap:12px;
+}
+.review-stars{ color: var(--amber-dark); font-size:1.05rem; letter-spacing:2px; }
+.review-card .placeholder-quote{
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--charcoal-soft);
+  border-left: 3px dashed var(--cardboard-darker);
+  padding-left: 12px;
+}
+.review-quote{
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  font-style: italic;
+  line-height:1.5;
+}
+.review-quote::before{ content: "\201C"; }
+.review-quote::after{ content: "\201D"; }
+.review-name{
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 8px;
+}
+.review-meta{
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--charcoal-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* -------- Forms -------- */
+.form-card{
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--cardboard-darker);
+  box-shadow: var(--shadow-card);
+  padding: 32px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.form-row{ margin-bottom: 20px; }
+.form-row label{
+  display:block; font-family: var(--font-mono); font-size:0.78rem;
+  text-transform:uppercase; letter-spacing:0.06em;
+  color: var(--ink-navy); margin-bottom:6px; font-weight:600;
+}
+.form-row .hint{ font-size:0.78rem; color: var(--charcoal-soft); margin-top:4px; font-family:var(--font-body); }
+input[type=text], input[type=email], input[type=tel], select, textarea{
+  width:100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid var(--cardboard-darker);
+  border-radius: var(--radius-sm);
+  background: var(--cardboard);
+  color: var(--charcoal);
+}
+textarea{ resize: vertical; min-height:90px; }
+input:focus, select:focus, textarea:focus{
+  outline: 3px solid var(--teal);
+  outline-offset: 1px;
+  background: var(--white);
+}
+.checkbox-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:10px 16px; }
+@media (max-width:520px){ .checkbox-grid{ grid-template-columns:1fr; } }
+.checkbox-item{ display:flex; align-items:center; gap:8px; font-size:0.92rem; }
+.checkbox-item input{ width:auto; }
+
+/* -------- Footer -------- */
+.site-footer{
+  background: var(--ink-navy);
+  color: var(--cardboard);
+  padding: 48px 0 24px;
+  border-top: 3px solid var(--amber);
+}
+.footer-grid{
+  display:grid; grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr; } }
+.site-footer h4{ color: var(--amber); font-size:0.95rem; margin-bottom:14px; }
+.site-footer a{ color: var(--cardboard); }
+.site-footer a:hover{ color: var(--amber); }
+.footer-list{ list-style:none; margin:0; padding:0; }
+.footer-list li{ margin-bottom:8px; font-size:0.92rem; }
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 18px;
+  font-size: 0.78rem;
+  color: #9FADC4;
+  font-family: var(--font-mono);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+}
+
+/* -------- Sticky mobile CTA bar -------- */
+.mobile-cta-bar{
+  display:none;
+  position: fixed; bottom:0; left:0; right:0;
+  background: var(--ink-navy);
+  border-top: 3px solid var(--amber);
+  padding: 10px 16px;
+  z-index: 400;
+  gap: 10px;
+}
+@media (max-width: 700px){
+  .mobile-cta-bar{ display:flex; }
+  body{ padding-bottom: 70px; }
+  .nav-cta{ display:none; }
+}
+.mobile-cta-bar .btn{ flex:1; padding: 12px 10px; font-size:0.8rem; }
+
+/* -------- Breadcrumb -------- */
+.breadcrumb{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 14px;
+}
+.breadcrumb a{ color: var(--teal-dark); }
+
+/* -------- Utility -------- */
+.text-center{ text-align:center; }
+.mt-0{ margin-top:0; }
+.mb-0{ margin-bottom:0; }
+.max-w-prose{ max-width: 640px; }
+.flex-center{ display:flex; align-items:center; }
+.gap-sm{ gap:10px; }
+.badge-count{
+  font-family: var(--font-mono); font-size:0.7rem;
+  background: var(--amber); color: var(--ink-navy);
+  padding:2px 8px; border-radius:20px; margin-left:8px;
+}
+.divider-dashed{ border:none; border-top:2px dashed var(--cardboard-darker); margin: 40px 0; }
+.note-banner{
+  background: var(--white);
+  border: 1px dashed var(--teal-dark);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  color: var(--charcoal-soft);
+  font-family: var(--font-mono);
+}
+.confirm-toast{
+  display:none;
+  background: var(--teal-dark);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  margin-top: 12px;
+}
+.confirm-toast.show{ display:block; }
+
+</style>
+</head>
+<body>
+  <div style="display:block; background:var(--stamp-red); color:#fff; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.8rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:10px 16px; cursor:default;">&#128293; This Week's HOT Items &mdash; Coming Soon</div>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo" style="text-decoration:none;">
+        VINCENT INTERNATIONAL
+        <span>Distributing, Inc. &mdash; Miami, FL</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+      <li class="has-dropdown"><a href="catalog.html">Catalog &#9662;</a>
+        <ul class="dropdown">
+          <li><a href="category-health-beauty.html">Health & Beauty</a></li>
+          <li><a href="category-bath.html">Bath</a></li>
+          <li><a href="category-kitchen.html">Kitchen</a></li>
+          <li><a href="category-clothing.html">Clothing</a></li>
+          <li><a href="category-other.html">Other</a></li>
+          <li><a href="category-home-decor.html">Home Décor</a></li>
+          <li><a href="category-bedding.html">Bedding</a></li>
+          <li><a href="category-fragrance.html">Fragrance</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html" class="current">Contact</a></li>
+      </ul>
+      <div class="nav-cta" style="position:relative;">
+        <a href="order-list.html" class="btn btn-primary btn-sm"><span class="btn-label-full">Your </span>Order List<span class="order-badge" id="order-badge" style="display:none; position: absolute; top: -8px; right: -8px; background: #C45A39; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; font-family: 'IBM Plex Mono', monospace;">0</span></a>
+      </div>
+    </nav>
+  </header>
+  
+  <section class="section" style="padding-top:40px;">
+    <div class="container grid grid-2">
+      <div>
+        <span class="eyebrow">Contact &amp; Visit Us</span>
+        <h1>Talk to Our Team</h1>
+        <p class="max-w-prose">Call, email, or stop by the warehouse during business hours.</p>
+        <div class="hero-manifest" style="transform:none; margin-top:24px;">
+          <div class="hero-manifest-title"><span>Contact Info</span><span>Miami, FL</span></div>
+          <ul>
+            <li><span>Phone</span> <b><a href="tel:+13057701488">(305) 770-1488</a></b></li>
+            <li><span>Email</span> <b><a href="mailto:Vincentmiami305@gmail.com">Vincentmiami305@gmail.com</a></b></li>
+            <li><span>Address</span> <b>20325 NE 15th Ct, Miami, FL 33179</b></li>
+          </ul>
+        </div>
+        <div class="hero-manifest" style="transform:none; margin-top:20px;">
+          <div class="hero-manifest-title"><span>Hours</span><span></span></div>
+          <ul>
+            <li><span>Monday</span> <b>8:30 AM &ndash; 5:00 PM</b></li>
+            <li><span>Tuesday</span> <b>8:30 AM &ndash; 5:00 PM</b></li>
+            <li><span>Wednesday</span> <b>8:30 AM &ndash; 5:00 PM</b></li>
+            <li><span>Thursday</span> <b>8:30 AM &ndash; 5:00 PM</b></li>
+            <li><span>Friday</span> <b>8:30 AM &ndash; 5:00 PM</b></li>
+            <li><span>Saturday</span> <b>Closed</b></li>
+            <li><span>Sunday</span> <b>Closed</b></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <iframe title="Map to Vincent International Distributing, Inc." src="https://www.google.com/maps?q=20325+NE+15th+Ct,+Miami,+FL+33179&output=embed" width="100%" height="320" style="border:2px solid var(--ink-navy); border-radius:8px;" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Vincent International Distributing, Inc.</h4>
+          <ul class="footer-list">
+            <li>20325 NE 15th Ct, Miami, FL 33179</li>
+            <li><a href="tel:+13057701488">(305) 770-1488</a></li>
+            <li><a href="mailto:Vincentmiami305@gmail.com">Vincentmiami305@gmail.com</a></li>
+          </ul>
+          <p style="margin-top:14px; font-size:0.85rem;">Wholesale distributor of cleaning products, household goods, apparel, kitchenware, bedding, and fragrances &mdash; importing and moving inventory in bulk out of Miami, FL.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-list">
+            <li><a href="catalog.html">Full Catalog</a></li>
+            <li><a href="reviews.html">Google Reviews</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact &amp; Directions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul class="footer-list">
+            <li>Mon &ndash; Fri: 8:30 AM &ndash; 5:00 PM</li>
+            <li>Saturday: Closed</li>
+            <li>Sunday: Closed</li>
+          </ul>
+          <div class="stamp stamp--teal" style="margin-top:16px; width:96px; height:96px;">
+            <b>5&#9733;</b>
+            <small>Verified Reviews</small>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Vincent International Distributing, Inc. &mdash; Miami, FL</span>
+        <span>Wholesale only &mdash; pricing available to approved accounts</span>
+      </div>
+    </div>
+  </footer>
+  <div class="mobile-cta-bar">
+    <a href="tel:+13057701488" class="btn btn-outline" style="color:#fff; border-color:#fff;">Call Now</a>
+    <a href="catalog.html" class="btn btn-primary">Browse</a>
+  </div>
+  <script>
+// Vincent International Distributing — shared site behavior
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Mobile nav toggle
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      links.classList.toggle('open');
+      var expanded = links.classList.contains('open');
+      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  }
+
+  // "Add to Quote List" buttons — simple in-page state, no persistence.
+  // Keeps a running count for this page view and gives clear visual confirmation.
+  var quoteCount = 0;
+  var counterEls = document.querySelectorAll('[data-quote-counter]');
+
+  function updateCounters() {
+    counterEls.forEach(function (el) {
+      el.textContent = quoteCount;
+      el.style.display = quoteCount > 0 ? 'inline-flex' : 'none';
+    });
+  }
+
+  document.querySelectorAll('[data-add-to-quote]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (btn.dataset.added === 'true') return;
+      quoteCount += 1;
+      btn.dataset.added = 'true';
+      btn.textContent = 'Added ✓';
+      btn.classList.add('btn-outline-navy');
+      btn.classList.remove('btn-primary');
+      updateCounters();
+    });
+  });
+
+  updateCounters();
+
+  // Simple client-side "submit" confirmation for forms without a backend yet.
+  document.querySelectorAll('form[data-demo-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var toast = form.querySelector('.confirm-toast');
+      if (toast) {
+        toast.classList.add('show');
+        toast.textContent = 'This form isn\'t wired to a backend yet — connect it to your email, CRM, or a form service (e.g. Formspree) to start receiving submissions.';
+      }
+    });
+  });
+});
+
+</script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function updateBadge() {
+        var badge = document.getElementById('order-badge');
+        if (!badge) return;
+        var stored = localStorage.getItem('vincentOrderList');
+        var itemCount = 0;
+        if (stored) {
+          var items = JSON.parse(stored);
+          itemCount = Object.keys(items).length;
+        }
+        badge.textContent = itemCount;
+        badge.style.display = itemCount > 0 ? 'flex' : 'none';
+      }
+      updateBadge();
+      window.addEventListener('storage', updateBadge);
+    });
+  </script>
+
+</body>
+</html>
