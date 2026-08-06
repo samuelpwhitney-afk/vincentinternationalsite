@@ -608,6 +608,8 @@ document.addEventListener('DOMContentLoaded', function () {
       var productMeta = productCard.querySelector('.product-meta').textContent.trim();
       var itemMatch = productMeta.match(/Item #: (\d+(?: \(\d+\))?)/);
       var itemNumber = itemMatch ? itemMatch[1] : '';
+    var casePackMatch = productMeta.match(/Case Pack: (.+)$/);
+    var casePack = casePackMatch ? casePackMatch[1].trim() : '';
 
       if (selectedItems[itemNumber]) {
         btn.dataset.added = 'true';
@@ -632,6 +634,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var itemMatch = productMeta.match(/Item #: (\d+(?: \(\d+\))?)/);
     var itemLabel = productCard.querySelector('h3').textContent.trim();
     var itemNumber = itemMatch ? itemMatch[1] : '';
+    var casePackMatch = productMeta.match(/Case Pack: (.+)$/);
+    var casePack = casePackMatch ? casePackMatch[1].trim() : '';
 
     if (selectedItems[itemNumber]) {
       btn.dataset.added = 'true';
@@ -651,6 +655,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         selectedItems[itemNumber] = {
           name: itemLabel,
+          casePack: casePack,
           qty: 1
         };
         quoteCount += 1;

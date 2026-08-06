@@ -1,0 +1,45 @@
+VINCENT SITE - LIVE UPDATE CHECKLIST
+
+Use this every time you change the website.
+
+1) Open the local project folder
+- /Users/samuelwhitney/Downloads/files
+
+2) Make your edits
+- Update HTML files
+- Add new images (named by item number, for example: 7432.png)
+- Keep images in the same folder as the HTML files
+
+3) Preview locally (quick check)
+- Open index.html in browser
+- Click through changed pages
+- Confirm images load
+- Confirm Order List still works
+
+4) Push changes to GitHub
+- In Terminal:
+  cd /Users/samuelwhitney/Downloads/files
+  git add .
+  git commit -m "update site content"
+  git push
+
+5) Wait for Netlify auto deploy
+- Open Netlify dashboard
+- Go to Deploys
+- Wait until status says Published
+
+6) Verify live site
+- Open your Netlify URL
+- Hard refresh: Cmd + Shift + R
+- Check the pages you changed
+
+If updates do not show live:
+- Make sure you pushed to the branch Netlify uses (usually main)
+- Check Netlify Deploy log for errors
+- Confirm index.html is at repo root
+- Hard refresh browser again
+
+Optional safety backup before big edits:
+- cd /Users/samuelwhitney/Downloads
+- stamp=$(date +%Y%m%d-%H%M%S)
+- cp -R files "files-backup-$stamp"

@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Order List | Vincent International Distributing, Inc.</title>
+<meta name="description" content="Your order list from Vincent International Distributing, Inc. in Miami, FL.">
+<style>
+/* ============================================================
+   Vincent International Distributing, Inc. — Site Stylesheet
+   Design concept: Miami import/export warehouse — cargo manifests,
+   customs stamps, aisle signage. Warm cardboard + navy ink + amber.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink-navy: #1F2C3A;
+  --ink-navy-light: #31475A;
+  --cardboard: #FBFAF8;
+  --cardboard-dark: #F3EEE8;
+  --cardboard-darker: #E8E0D3;
+  --amber: #F08C2E;
+  --amber-dark: #D96F16;
+  --teal: #E28A4B;
+  --teal-dark: #C96E29;
+  --stamp-red: #C45A39;
+  --white: #FFFFFF;
+  --charcoal: #23313D;
+  --charcoal-soft: #5F6872;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 2px 0 rgba(31,44,58,0.06), 0 10px 24px -14px rgba(31,44,58,0.18);
+  --container: 1140px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, var(--white) 0%, var(--cardboard) 100%);
+  color: var(--charcoal);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color: var(--teal-dark); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  color: var(--ink-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h1{ font-size: clamp(2rem, 6vw, 3.4rem); font-weight:700; }
+h2{ font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight:600; }
+h3{ font-size: 1.25rem; font-weight:600; letter-spacing:0.02em; }
+
+p{ margin:0 0 1em; color: var(--charcoal-soft); }
+
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section{ padding: 56px 0; }
+.section--tight{ padding: 36px 0; }
+.section--navy{ background: linear-gradient(135deg, var(--ink-navy) 0%, var(--ink-navy-light) 100%); color: var(--white); }
+.section--navy h2, .section--navy h3{ color: var(--white); }
+.section--navy p{ color: rgba(255,255,255,0.92); }
+.section--dark-card{ background: var(--cardboard-dark); }
+
+/* -------- Buttons -------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-display);
+  font-weight:600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor:pointer;
+  transition: transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn:hover{ text-decoration:none; transform: translateY(-1px); }
+.btn:active{ transform: translateY(0); }
+.btn-primary{ background: var(--amber); color: var(--ink-navy); }
+.btn-primary:hover{ background: var(--amber-dark); }
+.btn-outline{ background: transparent; border-color: currentColor; color: inherit; }
+.btn-outline:hover{ background: rgba(255,255,255,0.08); }
+.btn-outline-navy{ background: transparent; border-color: var(--ink-navy); color: var(--ink-navy); }
+.btn-outline-navy:hover{ background: var(--ink-navy); color: var(--white); }
+.btn-sm{ padding: 10px 18px; font-size: 0.78rem; }
+.btn-block{ width:100%; justify-content:center; }
+.btn[disabled]{ opacity:0.55; cursor:not-allowed; transform:none; }
+
+/* -------- Nav -------- */
+.site-header{
+  position: sticky; top:0; z-index: 500;
+  background: var(--ink-navy);
+  border-bottom: 3px solid var(--amber);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 20px;
+  max-width: var(--container);
+  margin:0 auto;
+  position:relative;
+}
+.nav-logo{
+  font-family: var(--font-display);
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+.nav-logo span{
+  font-family: var(--font-mono);
+  font-size:0.65rem;
+  color: var(--amber);
+  letter-spacing:0.16em;
+  font-weight:500;
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex; align-items:center; gap: 26px;
+  list-style:none; margin:0; padding:0;
+}
+.nav-links a{
+  color: var(--cardboard);
+  font-family: var(--font-display);
+  font-size:0.92rem;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-weight:500;
+}
+.nav-links a:hover{ color: var(--amber); text-decoration:none; }
+.nav-links a.current{ color: var(--amber); }
+.nav-cta{ display:flex; align-items:center; gap:14px; }
+.nav-toggle{
+  display:none;
+  background:none; border:none; cursor:pointer;
+  width:34px; height:28px; position:relative;
+  flex-direction:column; justify-content:space-between;
+}
+.nav-toggle span{ display:block; height:3px; background:var(--white); border-radius:2px; }
+
+.has-dropdown{ position:relative; }
+.dropdown{
+  list-style:none; margin:0; padding:10px 0;
+  position:absolute; top:100%; left:0;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  min-width: 220px;
+  display:none;
+  z-index: 50;
+}
+.has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown{ display:block; }
+.dropdown a{
+  display:block; padding:10px 20px;
+  color: var(--ink-navy);
+  font-family: var(--font-body);
+  text-transform:none;
+  letter-spacing:0;
+  font-size:0.92rem;
+  font-weight:500;
+}
+.dropdown a:hover{ background: var(--cardboard); text-decoration:none; }
+
+@media (max-width: 860px){
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:absolute; top:100%; left:0; right:0;
+    background: var(--ink-navy);
+    flex-direction:column; align-items:flex-start;
+    padding: 10px 20px 20px;
+    gap: 4px;
+    display:none;
+    border-bottom: 3px solid var(--amber);
+  }
+  .nav-links.open{ display:flex; }
+  .nav-links a{ padding:10px 0; width:100%; }
+  .has-dropdown .dropdown{
+    position:static; box-shadow:none; display:block; min-width:0;
+    padding-left: 12px; background:transparent; margin-top:4px;
+  }
+  .has-dropdown .dropdown a{ color: var(--cardboard); padding:8px 0; }
+  .nav-cta .btn span.btn-label-full{ display:none; }
+}
+
+/* -------- Order List Items -------- */
+.order-item{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--cardboard-darker);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+
+.order-item-number{
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 28px;
+}
+
+.order-item-details{
+  flex: 1;
+}
+
+.order-item-name{
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin-bottom: 4px;
+}
+
+.order-item-meta{
+  font-size: 0.85rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 8px;
+}
+
+.order-item-controls{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qty-button{
+  background: var(--cardboard-dark);
+  border: 1px solid var(--cardboard-darker);
+  color: var(--ink-navy);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease;
+}
+
+.qty-button:hover{
+  background: var(--cardboard-darker);
+}
+
+.qty-display{
+  font-family: var(--font-mono);
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.empty-state{
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--cardboard-dark);
+  border-radius: var(--radius-sm);
+}
+
+.empty-state-icon{
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.breadcrumb{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 14px;
+}
+
+.breadcrumb a{ color: var(--teal-dark); }
+
+.grid{ display:grid; gap: 24px; }
+.grid-2{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 860px){ .grid-2{ grid-template-columns: 1fr; } }
+@media (max-width: 600px){ .grid-2{ grid-template-columns: 1fr; } }
+
+/* -------- Footer -------- */
+.site-footer{
+  background: var(--ink-navy);
+  color: var(--cardboard);
+  padding: 48px 0 24px;
+  border-top: 3px solid var(--amber);
+}
+.footer-grid{
+  display:grid; grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr; } }
+.site-footer h4{ color: var(--amber); font-size:0.95rem; margin-bottom:14px; }
+.site-footer a{ color: var(--cardboard); }
+.site-footer a:hover{ color: var(--amber); }
+.footer-list{ list-style:none; margin:0; padding:0; }
+.footer-list li{ margin-bottom:8px; font-size:0.92rem; }
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 18px;
+  font-size: 0.78rem;
+  color: #9FADC4;
+  font-family: var(--font-mono);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+}
+
+.text-center{ text-align:center; }
+.max-w-prose{ max-width: 640px; }
+
+.customer-form-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.customer-form-grid .full{
+  grid-column: 1 / -1;
+}
+
+.customer-label{
+  display:block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  margin-bottom: 4px;
+}
+
+.customer-input,
+.customer-textarea{
+  width:100%;
+  border:1px solid var(--cardboard-darker);
+  border-radius: 6px;
+  padding: 9px 10px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  background: #fff;
+  color: var(--charcoal);
+}
+
+.customer-textarea{
+  min-height: 74px;
+  resize: vertical;
+}
+
+.customer-help{
+  font-size: 0.8rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 12px;
+}
+
+.send-status{
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: var(--charcoal-soft);
+}
+
+.send-status.success{ color: #2b6f43; }
+.send-status.error{ color: var(--stamp-red); }
+
+.send-thankyou{
+  display:none;
+  margin-top: 12px;
+  border: 1px solid #B9DFC8;
+  background: #ECF8F1;
+  color: #1D5A36;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.send-thankyou.show{
+  display:block;
+}
+
+.send-thankyou-title{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.send-thankyou-note{
+  font-size: 0.85rem;
+  margin: 0;
+  color: #1D5A36;
+}
+
+.print-sheet{ display:none; }
+@media print{
+  body *{ visibility:hidden; }
+  .print-sheet, .print-sheet *{ visibility:visible; }
+  .print-sheet{
+    display:block;
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    padding:0;
+    margin:0;
+  }
+  .print-sheet-header{ display:flex; justify-content:space-between; align-items:flex-start; border-bottom:3px solid #000; padding-bottom:12px; margin-bottom:18px; }
+  .print-sheet-header h1{ font-size:1.4rem; margin:0 0 4px; text-transform:uppercase; letter-spacing:0.04em; }
+  .print-sheet-header p{ margin:0; font-size:0.85rem; line-height:1.4; }
+  .print-sheet-meta{ text-align:right; font-size:0.85rem; }
+  .print-sheet-meta div{ margin-bottom:4px; }
+  .print-sheet table{ width:100%; border-collapse:collapse; margin-bottom:20px; }
+  .print-sheet th, .print-sheet td{ border:1px solid #000; padding:8px 10px; font-size:0.9rem; text-align:left; }
+  .print-sheet th{ background:#eee; text-transform:uppercase; font-size:0.78rem; letter-spacing:0.05em; }
+  .print-sheet td.case-col, .print-sheet th.case-col{ width:140px; }
+  .print-sheet td.qty-col, .print-sheet th.qty-col{ text-align:center; width:90px; }
+  .print-sheet-totals{ display:flex; justify-content:flex-end; gap:32px; font-size:0.9rem; margin-bottom:24px; }
+  .print-sheet-totals strong{ font-size:1rem; }
+  .print-sheet-footer{ font-size:0.8rem; border-top:1px solid #000; padding-top:10px; display:flex; justify-content:space-between; }
+  .print-customer-card{ border:1px solid #000; padding:10px 12px; margin-bottom:14px; }
+  .print-customer-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap: 6px 16px; font-size:0.86rem; }
+  .print-customer-grid .full{ grid-column:1 / -1; }
+  .print-customer-label{ font-weight:700; text-transform:uppercase; font-size:0.72rem; letter-spacing:0.05em; margin-right:6px; }
+  @page{ margin:0.6in; }
+}
+
+</style>
+</head>
+<body>
+  <div style="display:block; background:var(--stamp-red); color:#fff; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:0.8rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:10px 16px; cursor:default;">&#128293; This Week's HOT Items &mdash; Coming Soon</div>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo" style="text-decoration:none;">
+        <span>VINCENT</span>
+        <span style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.05em;">INTERNATIONAL</span>
+        Distributing, Inc. — Miami, FL
+      </a>
+      <ul class="nav-links">
+      <li class="has-dropdown"><a href="catalog.html" class="current">Catalog &#9662;</a>
+        <ul class="dropdown">
+          <li><a href="category-health-beauty.html">Health & Beauty</a></li>
+          <li><a href="category-bath.html">Bath</a></li>
+          <li><a href="category-kitchen.html">Kitchen</a></li>
+          <li><a href="category-clothing.html">Clothing</a></li>
+          <li><a href="category-other.html">Other</a></li>
+          <li><a href="category-home-decor.html">Home Décor</a></li>
+          <li><a href="category-bedding.html">Bedding</a></li>
+          <li><a href="category-fragrance.html">Fragrance</a></li>
+        </ul>
+      </li>        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="order-list.html" class="btn btn-primary btn-sm"><span class="btn-label-full">Your </span>Order List<span class="order-badge" id="order-badge">0</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section" style="padding-top:32px;">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Your Order List</div>
+      <h1>Your Order List</h1>
+      <p class="max-w-prose">Review your items below, adjust quantities, and print your list when ready for your next visit or phone call.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <div>
+        <h3 style="margin-bottom:20px;">Items Added</h3>
+        <div id="order-list" style="min-height:200px;">
+          <!-- Order items will be rendered here -->
+        </div>
+      </div>
+      <div style="background: var(--cardboard-dark); padding:24px; border-radius:8px; height:fit-content;">
+        <h3 style="margin-bottom:16px;">Order Summary</h3>
+        <div style="margin-bottom:20px; padding-bottom:20px; border-bottom:1px dashed var(--cardboard-darker);">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+            <span>Total Items:</span>
+            <strong id="item-count">0</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+            <span>Unique Products:</span>
+            <strong id="unique-count">0</strong>
+          </div>
+        </div>
+        <h3 style="font-size:1rem; margin-bottom:10px;">Customer Information</h3>
+        <p class="customer-help">Fill all fields before printing or sending the order list.</p>
+        <div class="customer-form-grid">
+          <div>
+            <label class="customer-label" for="customer-first-name">First Name</label>
+            <input class="customer-input" id="customer-first-name" type="text" autocomplete="given-name">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-last-name">Last Name</label>
+            <input class="customer-input" id="customer-last-name" type="text" autocomplete="family-name">
+          </div>
+          <div class="full">
+            <label class="customer-label" for="customer-business-name">Business Name</label>
+            <input class="customer-input" id="customer-business-name" type="text" autocomplete="organization">
+          </div>
+          <div class="full">
+            <label class="customer-label" for="customer-ship-address-line1">Address</label>
+            <input class="customer-input" id="customer-ship-address-line1" type="text" autocomplete="address-line1">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-ship-city">City</label>
+            <input class="customer-input" id="customer-ship-city" type="text" autocomplete="address-level2">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-ship-state">State</label>
+            <input class="customer-input" id="customer-ship-state" type="text" autocomplete="address-level1">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-ship-zip">Zip</label>
+            <input class="customer-input" id="customer-ship-zip" type="text" autocomplete="postal-code">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-ship-country">Country</label>
+            <input class="customer-input" id="customer-ship-country" type="text" autocomplete="country-name">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-phone">Phone Number</label>
+            <input class="customer-input" id="customer-phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(305) 770-1488">
+          </div>
+          <div>
+            <label class="customer-label" for="customer-email">Email</label>
+            <input class="customer-input" id="customer-email" type="email" autocomplete="email">
+          </div>
+          <div class="full">
+            <label class="customer-label" for="customer-resale">Resale #</label>
+            <input class="customer-input" id="customer-resale" type="text">
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-block btn-sm" data-print-order style="margin-bottom:12px;">Print Order List</button>
+        <button type="button" class="btn btn-outline-navy btn-block btn-sm" data-send-order style="margin-bottom:12px;">Send List Directly to Us</button>
+        <div id="send-status" class="send-status" aria-live="polite"></div>
+        <div id="send-thankyou" class="send-thankyou" aria-live="polite">
+          <div class="send-thankyou-title">Thank You - Order Submitted</div>
+          <p class="send-thankyou-note" id="send-thankyou-note"></p>
+        </div>
+        <a href="catalog.html" class="btn btn-outline-navy btn-block btn-sm" style="justify-content:center;">Back to Catalog</a>
+        <button type="button" class="btn btn-outline-navy btn-block btn-sm" data-clear-order style="margin-top:12px;">Clear Order List</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container text-center">
+    </div>
+  </section>
+
+  <form name="order-list-submit" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="order-list-submit">
+    <input type="text" name="bot-field">
+    <input type="text" name="firstName">
+    <input type="text" name="lastName">
+    <input type="text" name="businessName">
+    <input type="text" name="shippingAddressLine1">
+    <input type="text" name="shippingCity">
+    <input type="text" name="shippingState">
+    <input type="text" name="shippingZip">
+    <input type="text" name="shippingCountry">
+    <textarea name="shippingAddress"></textarea>
+    <input type="text" name="phone">
+    <input type="email" name="email">
+    <input type="text" name="resaleNumber">
+    <textarea name="orderItems"></textarea>
+    <input type="text" name="totalItems">
+    <input type="text" name="uniqueProducts">
+  </form>
+
+  <div class="print-sheet" id="print-sheet"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Vincent International Distributing, Inc.</h4>
+          <ul>
+            <li>20325 NE 15th Ct, Miami, FL 33179</li>
+            <li><a href="tel:+13057701488">(305) 770-1488</a></li>
+            <li><a href="mailto:Vincentmiami305@gmail.com">Vincentmiami305@gmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="catalog.html">Full Catalog</a></li>
+            <li><a href="order-list.html">Your Order List</a></li>
+            <li><a href="reviews.html">Google Reviews</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact & Directions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Mon – Fri: 8:30 AM – 5:00 PM</li>
+            <li>Saturday: Closed</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Vincent International Distributing, Inc. — Miami, FL<br>
+        Wholesale only — pricing available to approved accounts
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const selectedItems = {};
+    const STORAGE_KEY = 'vincentOrderList';
+    const CUSTOMER_STORAGE_KEY = 'vincentCustomerInfo';
+    const VINCENT_EMAIL = 'vincentmiami305@gmail.com';
+    const CASE_PACK_BY_ITEM = {
+      "10104": "PK/6",
+      "10137": "PK/12",
+      "10142": "PK/12",
+      "10163": "PK/12",
+      "10175": "1 PC",
+      "10279": "1 PC",
+      "10281": "SET",
+      "10320": "PC",
+      "10347": "CS/48",
+      "10444": "SET",
+      "10449": "CS/30",
+      "10460": "CS/180",
+      "10481": "PC",
+      "10482": "PC",
+      "10483": "PC",
+      "10517": "CS/12",
+      "10567": "CS/24",
+      "10622": "SET",
+      "10666": "PK/6",
+      "10742": "1 PC",
+      "10743": "1 PC",
+      "10780": "CS/24",
+      "10780 (2)": "CS/24",
+      "10780 (3)": "CS/24",
+      "10787": "CS/24",
+      "10798": "SET",
+      "10814": "CS/1",
+      "10818": "PK/6",
+      "10835": "PK/3",
+      "1163": "CS/54",
+      "120": "CS/30",
+      "1489": "CS/72",
+      "2453": "CS/24",
+      "2454": "CS/24",
+      "2505": "CS/32",
+      "2582": "CS/72",
+      "3076": "CS/54",
+      "3209": "CS/12",
+      "3365": "CS/48",
+      "3431": "CS/24",
+      "3585": "CS/54",
+      "4448": "PK/12",
+      "46915": "CS/12",
+      "4787": "CS/24",
+      "4790": "CS/54",
+      "50150": "CS/24",
+      "5250": "CS/4",
+      "5266": "CS/24",
+      "5286": "CS/120",
+      "5551": "CS/144",
+      "5551 (2)": "CS/144",
+      "5598": "CS/32",
+      "5753": "PK/3",
+      "5806": "PK/3",
+      "5918": "CS/12",
+      "59711": "DZ",
+      "6009": "CS/8DZ",
+      "6148": "PK/12",
+      "6159": "SET",
+      "6324": "CS/36PK",
+      "6354": "CS/24PK",
+      "6464": "SET",
+      "666": "CS/25",
+      "6701": "CS/36",
+      "6747": "PK/12",
+      "687": "CS/24",
+      "688": "CS/36",
+      "689": "CS/10",
+      "6918": "CS/192",
+      "7063": "CS/6",
+      "7390": "CS/60",
+      "7432": "CS/36",
+      "7463": "CS/24",
+      "7472": "SET",
+      "7587": "CS/48",
+      "7593": "CS/120",
+      "7700": "CS/4PKS",
+      "777": "CS/8",
+      "7796": "DZ",
+      "7842": "CS/6SET",
+      "7845": "CS/72",
+      "7845 (2)": "CS/72",
+      "7845 (3)": "CS/72",
+      "7845 (4)": "CS/72",
+      "7866": "CS/48",
+      "8002": "PK/6",
+      "8010": "1 PC",
+      "80207": "CS/12",
+      "80232": "CS/72",
+      "80253": "CS/36",
+      "80264": "CS/12",
+      "80327": "CS/72",
+      "80371": "CS/144",
+      "80372": "CS/40",
+      "80375": "CS/144",
+      "80389": "CS/48",
+      "80390": "CS/144",
+      "80401": "CS/25",
+      "80408": "CS/48",
+      "80410": "PC",
+      "80413": "CS/10PK",
+      "8131": "SET",
+      "8194": "PK/12",
+      "8278": "PK/3",
+      "8387": "CS/72",
+      "8521": "CS/12set",
+      "8608": "CS/8",
+      "8613": "CS/60",
+      "8634": "PC",
+      "8670": "CSI6",
+      "8672": "CS/40",
+      "8747": "CS/12",
+      "8792": "SET",
+      "896": "CS/72",
+      "9247": "PC",
+      "9260": "CS/40",
+      "9285": "CS/36",
+      "9334": "PC",
+      "9368": "CS/36",
+      "9436": "CS/27",
+      "9437": "CS/54",
+      "9462": "PK/12",
+      "9473": "PK/12",
+      "9495": "CS/60",
+      "9496": "CS/50",
+      "9502": "CS/36",
+      "9504": "CS/36",
+      "9585": "CS/20",
+      "9605": "CS/1",
+      "9647": "CS/25",
+      "9677": "CS/50",
+      "9722": "CS/48",
+      "9730": "CS/12",
+      "9805": "PC",
+      "9821": "CS/6",
+      "9822": "PC",
+      "9908": "1 PC",
+      "9958": "PK/6",
+      "9962": "PK/12",
+      "9964": "PK/12",
+      "9966": "PK/12"
+    };
+
+    function loadOrderList() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        Object.assign(selectedItems, JSON.parse(stored));
+      }
+
+      // Backfill case packs for items saved before casePack support was added.
+      let didBackfill = false;
+      Object.entries(selectedItems).forEach(([itemId, item]) => {
+        if (!item.casePack && CASE_PACK_BY_ITEM[itemId]) {
+          item.casePack = CASE_PACK_BY_ITEM[itemId];
+          didBackfill = true;
+        }
+      });
+      if (didBackfill) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(selectedItems));
+      }
+
+      renderOrderList();
+      updateSummary();
+      updateBadge();
+    }
+
+    function renderOrderList() {
+      const orderList = document.getElementById('order-list');
+      
+      if (Object.keys(selectedItems).length === 0) {
+        orderList.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📦</div>
+            <h3 style="font-size:1rem; margin-top:0;">Your order list is empty</h3>
+            <p style="margin:0; font-size:0.9rem;">Browse the catalog and add items to get started.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      Object.entries(selectedItems).forEach(([itemId, item], index) => {
+        const casePack = item.casePack || 'N/A';
+        html += `
+          <div class="order-item">
+            <div class="order-item-number">${index + 1}.</div>
+            <div class="order-item-details">
+              <div class="order-item-name">${item.name}</div>
+              <div class="order-item-meta">Item #: ${itemId} &mdash; Case Pack: ${casePack}</div>
+              <div class="order-item-controls">
+                <button type="button" class="qty-button" onclick="adjustQuantity('${itemId}', -1)">−</button>
+                <div class="qty-display">${item.qty}</div>
+                <button type="button" class="qty-button" onclick="adjustQuantity('${itemId}', 1)">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      orderList.innerHTML = html;
+    }
+
+    function adjustQuantity(itemId, change) {
+      if (selectedItems[itemId]) {
+        selectedItems[itemId].qty += change;
+        if (selectedItems[itemId].qty <= 0) {
+          delete selectedItems[itemId];
+        }
+        saveOrderList();
+        renderOrderList();
+        updateSummary();
+        updateBadge();
+      }
+    }
+
+    function updateSummary() {
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      const uniqueCount = Object.keys(selectedItems).length;
+      document.getElementById('item-count').textContent = itemCount;
+      document.getElementById('unique-count').textContent = uniqueCount;
+    }
+
+    function updateBadge() {
+      const badge = document.getElementById('order-badge');
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      badge.textContent = itemCount;
+      badge.style.display = itemCount > 0 ? 'flex' : 'none';
+    }
+
+    function saveOrderList() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(selectedItems));
+    }
+
+    function getCustomerInfoFromForm() {
+      return {
+        firstName: document.getElementById('customer-first-name')?.value.trim() || '',
+        lastName: document.getElementById('customer-last-name')?.value.trim() || '',
+        businessName: document.getElementById('customer-business-name')?.value.trim() || '',
+        shippingAddressLine1: document.getElementById('customer-ship-address-line1')?.value.trim() || '',
+        shippingCity: document.getElementById('customer-ship-city')?.value.trim() || '',
+        shippingState: document.getElementById('customer-ship-state')?.value.trim() || '',
+        shippingZip: document.getElementById('customer-ship-zip')?.value.trim() || '',
+        shippingCountry: document.getElementById('customer-ship-country')?.value.trim() || '',
+        phone: document.getElementById('customer-phone')?.value.trim() || '',
+        email: document.getElementById('customer-email')?.value.trim() || '',
+        resaleNumber: document.getElementById('customer-resale')?.value.trim() || ''
+      };
+    }
+
+    function saveCustomerInfo() {
+      localStorage.setItem(CUSTOMER_STORAGE_KEY, JSON.stringify(getCustomerInfoFromForm()));
+    }
+
+    function loadCustomerInfo() {
+      const stored = localStorage.getItem(CUSTOMER_STORAGE_KEY);
+      if (!stored) {
+        return;
+      }
+      try {
+        const info = JSON.parse(stored);
+        document.getElementById('customer-first-name').value = info.firstName || '';
+        document.getElementById('customer-last-name').value = info.lastName || '';
+        document.getElementById('customer-business-name').value = info.businessName || '';
+        document.getElementById('customer-ship-address-line1').value = info.shippingAddressLine1 || info.shippingAddress || '';
+        document.getElementById('customer-ship-city').value = info.shippingCity || '';
+        document.getElementById('customer-ship-state').value = info.shippingState || '';
+        document.getElementById('customer-ship-zip').value = info.shippingZip || '';
+        document.getElementById('customer-ship-country').value = info.shippingCountry || '';
+        document.getElementById('customer-phone').value = formatPhoneNumber(info.phone || '');
+        document.getElementById('customer-email').value = info.email || '';
+        document.getElementById('customer-resale').value = info.resaleNumber || '';
+      } catch (e) {
+        console.warn('Could not parse saved customer info.');
+      }
+    }
+
+    function validateCustomerInfo(info) {
+      const required = [
+        ['firstName', 'First Name'],
+        ['lastName', 'Last Name'],
+        ['businessName', 'Business Name'],
+        ['shippingAddressLine1', 'Address'],
+        ['shippingCity', 'City'],
+        ['shippingState', 'State'],
+        ['shippingZip', 'Zip'],
+        ['shippingCountry', 'Country'],
+        ['phone', 'Phone Number'],
+        ['email', 'Email'],
+        ['resaleNumber', 'Resale #']
+      ];
+
+      const missing = required.filter(([key]) => !info[key]).map(([, label]) => label);
+      if (missing.length > 0) {
+        alert('Please fill in all customer fields before continuing:\n\n' + missing.join('\n'));
+        return false;
+      }
+      return true;
+    }
+
+    function escHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function formatPhoneNumber(value) {
+      const digits = String(value || '').replace(/\D/g, '').slice(0, 10);
+      if (digits.length === 0) {
+        return '';
+      }
+      if (digits.length < 4) {
+        return '(' + digits;
+      }
+      if (digits.length < 7) {
+        return '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+      }
+      return '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
+    }
+
+    function buildOrderItemsText() {
+      let lines = [];
+      Object.entries(selectedItems).forEach(([itemId, item], index) => {
+        const casePack = item.casePack || 'N/A';
+        lines.push((index + 1) + '. ' + item.name);
+        lines.push('   Item #: ' + itemId + ' | Case Pack: ' + casePack + ' | Qty: ' + item.qty);
+      });
+      return lines.join('\n');
+    }
+
+    function encodeFormData(data) {
+      return Object.keys(data)
+        .map(function (key) {
+          return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+        })
+        .join('&');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadOrderList();
+      loadCustomerInfo();
+
+      const phoneInput = document.getElementById('customer-phone');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+          phoneInput.value = formatPhoneNumber(phoneInput.value);
+          saveCustomerInfo();
+        });
+      }
+
+      document.querySelectorAll('.customer-input, .customer-textarea').forEach(function (el) {
+        el.addEventListener('input', saveCustomerInfo);
+      });
+    });
+
+    document.querySelector('[data-print-order]')?.addEventListener('click', function() {
+      if (Object.keys(selectedItems).length === 0) {
+        alert('Your order list is empty.');
+        return;
+      }
+      const customerInfo = getCustomerInfoFromForm();
+      if (!validateCustomerInfo(customerInfo)) {
+        return;
+      }
+      saveCustomerInfo();
+      buildPrintSheet(customerInfo);
+      window.print();
+    });
+
+    function buildPrintSheet(customerInfo) {
+      const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      const uniqueCount = Object.keys(selectedItems).length;
+      const formattedShippingAddress = customerInfo.shippingAddressLine1 + ', ' + customerInfo.shippingCity + ', ' + customerInfo.shippingState + ' ' + customerInfo.shippingZip + ', ' + customerInfo.shippingCountry;
+
+      let rows = '';
+      Object.entries(selectedItems).forEach(([itemId, item], index) => {
+        const casePack = item.casePack || 'N/A';
+        rows += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+            <td>${itemId}</td>
+            <td class="case-col">${casePack}</td>
+            <td class="qty-col">${item.qty}</td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('print-sheet').innerHTML = `
+        <div class="print-sheet-header">
+          <div>
+            <h1>Vincent International Distributing, Inc.</h1>
+            <p>20325 NE 15th Ct, Miami, FL 33179<br>(305) 770-1488 &middot; Vincentmiami305@gmail.com</p>
+          </div>
+          <div class="print-sheet-meta">
+            <div><strong>Order List</strong></div>
+            <div>Date: ${today}</div>
+          </div>
+        </div>
+        <div class="print-customer-card">
+          <div class="print-customer-grid">
+            <div><span class="print-customer-label">First Name:</span>${escHtml(customerInfo.firstName)}</div>
+            <div><span class="print-customer-label">Last Name:</span>${escHtml(customerInfo.lastName)}</div>
+            <div class="full"><span class="print-customer-label">Business Name:</span>${escHtml(customerInfo.businessName)}</div>
+            <div class="full"><span class="print-customer-label">Shipping Address:</span>${escHtml(formattedShippingAddress)}</div>
+            <div><span class="print-customer-label">Phone:</span>${escHtml(customerInfo.phone)}</div>
+            <div><span class="print-customer-label">Email:</span>${escHtml(customerInfo.email)}</div>
+            <div class="full"><span class="print-customer-label">Resale #:</span>${escHtml(customerInfo.resaleNumber)}</div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item Name</th>
+              <th>Item #</th>
+              <th class="case-col">Case Pack</th>
+              <th class="qty-col">Qty</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <div class="print-sheet-totals">
+          <div>Unique Products: <strong>${uniqueCount}</strong></div>
+          <div>Total Items: <strong>${itemCount}</strong></div>
+        </div>
+        <div class="print-sheet-footer">
+          <span>Wholesale only &mdash; pricing available to approved accounts</span>
+          <span>This is not an invoice &mdash; present in person or call to place order</span>
+        </div>
+      `;
+    }
+
+    document.querySelector('[data-send-order]')?.addEventListener('click', async function() {
+      if (Object.keys(selectedItems).length === 0) {
+        alert('Your order list is empty.');
+        return;
+      }
+
+      const customerInfo = getCustomerInfoFromForm();
+      if (!validateCustomerInfo(customerInfo)) {
+        return;
+      }
+
+      saveCustomerInfo();
+      const sendBtn = document.querySelector('[data-send-order]');
+      const sendStatus = document.getElementById('send-status');
+      const sendThankYou = document.getElementById('send-thankyou');
+      const sendThankYouNote = document.getElementById('send-thankyou-note');
+      const itemCount = Object.values(selectedItems).reduce((sum, item) => sum + item.qty, 0);
+      const uniqueCount = Object.keys(selectedItems).length;
+      const orderItems = buildOrderItemsText();
+      const formattedShippingAddress = customerInfo.shippingAddressLine1 + ', ' + customerInfo.shippingCity + ', ' + customerInfo.shippingState + ' ' + customerInfo.shippingZip + ', ' + customerInfo.shippingCountry;
+
+      const payload = {
+        'form-name': 'order-list-submit',
+        firstName: customerInfo.firstName,
+        lastName: customerInfo.lastName,
+        businessName: customerInfo.businessName,
+        shippingAddressLine1: customerInfo.shippingAddressLine1,
+        shippingCity: customerInfo.shippingCity,
+        shippingState: customerInfo.shippingState,
+        shippingZip: customerInfo.shippingZip,
+        shippingCountry: customerInfo.shippingCountry,
+        shippingAddress: formattedShippingAddress,
+        phone: customerInfo.phone,
+        email: customerInfo.email,
+        resaleNumber: customerInfo.resaleNumber,
+        orderItems: orderItems,
+        totalItems: String(itemCount),
+        uniqueProducts: String(uniqueCount)
+      };
+
+      const isLocalPreview = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+      try {
+        if (sendBtn) {
+          sendBtn.disabled = true;
+          sendBtn.textContent = 'Sending...';
+        }
+        if (sendStatus) {
+          sendStatus.className = 'send-status';
+          sendStatus.textContent = 'Sending order to Vincent...';
+        }
+        if (sendThankYou) {
+          sendThankYou.classList.remove('show');
+        }
+
+        if (isLocalPreview) {
+          throw new Error('LOCAL_PREVIEW');
+        }
+
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed with status ' + response.status);
+        }
+
+        if (sendStatus) {
+          sendStatus.className = 'send-status success';
+          sendStatus.textContent = 'Order sent successfully to us. We will follow up soon.';
+        }
+        if (sendThankYou && sendThankYouNote) {
+          const now = new Date();
+          const stamp = now.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit'
+          });
+          const ref = 'VID-' + now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0') + '-' + String(now.getHours()).padStart(2, '0') + String(now.getMinutes()).padStart(2, '0') + String(now.getSeconds()).padStart(2, '0');
+          sendThankYouNote.textContent = 'Received on ' + stamp + '. Reference: ' + ref + '.';
+          sendThankYou.classList.add('show');
+        }
+      } catch (err) {
+        if (sendStatus) {
+          sendStatus.className = 'send-status error';
+          if (err && err.message === 'LOCAL_PREVIEW') {
+            sendStatus.textContent = 'Auto-send works only on your live Netlify site. This local preview cannot submit forms.';
+          } else {
+            sendStatus.textContent = 'Could not send automatically. Please try again on the live site.';
+          }
+        }
+        console.error('Order send failed:', err);
+        if (sendThankYou) {
+          sendThankYou.classList.remove('show');
+        }
+      } finally {
+        if (sendBtn) {
+          sendBtn.disabled = false;
+          sendBtn.textContent = 'Send List Directly to Us';
+        }
+      }
+    });
+
+
+    document.querySelector('[data-clear-order]')?.addEventListener('click', function() {
+      if (confirm('Are you sure you want to clear your entire order list?')) {
+        Object.keys(selectedItems).forEach(key => delete selectedItems[key]);
+        saveOrderList();
+        renderOrderList();
+        updateSummary();
+        updateBadge();
+      }
+    });
+  </script>
+</body>
+</html>
