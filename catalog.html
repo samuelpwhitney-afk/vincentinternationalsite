@@ -521,7 +521,7 @@ input:focus, select:focus, textarea:focus{
   body{ padding-bottom: 70px; }
   .nav-cta{ display:none; }
 }
-.mobile-cta-bar .btn{ flex:1; padding: 12px 10px; font-size:0.8rem; }
+.mobile-cta-bar .btn{ flex:1; padding: 10px 6px; font-size:0.72rem; }
 
 /* -------- Breadcrumb -------- */
 .breadcrumb{
@@ -737,6 +737,7 @@ input:focus, select:focus, textarea:focus{
   <div class="mobile-cta-bar">
     <a href="tel:+13057701488" class="btn btn-outline" style="color:#fff; border-color:#fff;">Call Now</a>
     <a href="catalog.html" class="btn btn-primary">Browse</a>
+    <a href="order-list.html" class="btn btn-primary" style="position:relative;">Order List<span class="order-badge" id="order-badge-mobile" style="display:none; position:absolute; top:-6px; right:-6px; background:#C45A39; color:#fff; border-radius:50%; width:20px; height:20px; align-items:center; justify-content:center; font-size:0.68rem; font-weight:700; font-family:'IBM Plex Mono', monospace;">0</span></a>
   </div>
   <script>
 // Vincent International Distributing — shared site behavior
@@ -797,16 +798,18 @@ document.addEventListener('DOMContentLoaded', function () {
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       function updateBadge() {
-        var badge = document.getElementById('order-badge');
-        if (!badge) return;
+        var badges = document.querySelectorAll('.order-badge');
+        if (!badges.length) return;
         var stored = localStorage.getItem('vincentOrderList');
         var itemCount = 0;
         if (stored) {
           var items = JSON.parse(stored);
           itemCount = Object.keys(items).length;
         }
-        badge.textContent = itemCount;
-        badge.style.display = itemCount > 0 ? 'flex' : 'none';
+        badges.forEach(function (badge) {
+          badge.textContent = itemCount;
+          badge.style.display = itemCount > 0 ? 'flex' : 'none';
+        });
       }
       updateBadge();
       window.addEventListener('storage', updateBadge);
