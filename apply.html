@@ -474,6 +474,17 @@ input:focus, select:focus, textarea:focus{
   color: var(--cardboard);
   padding: 48px 0 24px;
   border-top: 3px solid var(--amber);
+  position: relative;
+}
+.footer-signature{
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: #26364a;
+  pointer-events: none;
 }
 .footer-grid{
   display:grid; grid-template-columns: 1.3fr 1fr 1fr;
@@ -650,6 +661,7 @@ input:focus, select:focus, textarea:focus{
         <span>Wholesale only &mdash; pricing available to approved accounts</span>
       </div>
     </div>
+    <span class="footer-signature">sam whitney</span>
   </footer>
   <div class="mobile-cta-bar">
     <a href="tel:+13057701488" class="btn btn-outline" style="color:#fff; border-color:#fff;">Call Now</a>

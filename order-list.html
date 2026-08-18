@@ -322,6 +322,17 @@ p{ margin:0 0 1em; color: var(--charcoal-soft); }
   color: var(--cardboard);
   padding: 48px 0 24px;
   border-top: 3px solid var(--amber);
+  position: relative;
+}
+.footer-signature{
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: #26364a;
+  pointer-events: none;
 }
 .footer-grid{
   display:grid; grid-template-columns: 1.3fr 1fr 1fr;
@@ -646,6 +657,7 @@ p{ margin:0 0 1em; color: var(--charcoal-soft); }
         Wholesale only — pricing available to approved accounts
       </div>
     </div>
+    <span class="footer-signature">sam whitney</span>
   </footer>
 
   <script>
